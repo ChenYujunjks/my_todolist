@@ -1,4 +1,4 @@
-interface CollatedTask {
+export interface CollatedTask {
   key: string;
   name: string;
 }

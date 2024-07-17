@@ -1,4 +1,4 @@
-import { collatedTasks } from "../constants";
+import { collatedTasks, CollatedTask } from "../constants";
 
 interface Project {
   projectId: string;
@@ -11,7 +11,9 @@ export const getTitle = (projects: Project[], projectId: string) =>
 export const getCollatedTitle = (projects: Project[], key: string) =>
   projects.find((project) => project.key === key);
 
-export const collatedTasksExist = (selectedProject: string) =>
+export const collatedTasksExist = (
+  selectedProject: string
+): CollatedTask | undefined =>
   collatedTasks.find((task) => task.key === selectedProject);
 
 export const generatePushId = (() => {
