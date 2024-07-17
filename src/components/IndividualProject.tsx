@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { useProjectsValue, useSelectedProjectValue } from "../context";
-import { firebase } from "../firebase";
+import { doc, deleteDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 interface Project {
   docId: string;
@@ -19,16 +20,14 @@ export const IndividualProject: React.FC<IndividualProjectProps> = ({
   const { projects, setProjects } = useProjectsValue();
   const { setSelectedProject } = useSelectedProjectValue();
 
-  const deleteProject = (docId: string) => {
-    firebase
-      .firestore()
-      .collection("projects")
-      .doc(docId)
-      .delete()
-      .then(() => {
-        setProjects([...projects]);
-        setSelectedProject("INBOX");
-      });
+  const deleteProject = async (docId: string) => {
+    try {
+      await deleteDoc(doc(db, "projects", docId));
+      setProjects(projects.filter((proj) => proj.docId !== docId));
+      setSelectedProject("INBOX");
+    } catch (error) {
+      console.error("Error deleting project: ", error);
+    }
   };
 
   return (
