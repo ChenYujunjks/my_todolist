@@ -1,17 +1,21 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
-interface SelectedProjectContextType {
+interface SelectedProjectContextProps {
   selectedProject: string;
-  setSelectedProject: (project: string) => void;
+  setSelectedProject: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const SelectedProjectContext = createContext<
-  SelectedProjectContextType | undefined
+export const SelectedProjectContext = createContext<
+  SelectedProjectContextProps | undefined
 >(undefined);
 
-export const SelectedProjectProvider: React.FC<{ children: ReactNode }> = ({
+interface SelectedProjectProviderProps {
+  children: ReactNode;
+}
+
+export const SelectedProjectProvider = ({
   children,
-}) => {
+}: SelectedProjectProviderProps) => {
   const [selectedProject, setSelectedProject] = useState("INBOX");
 
   return (
@@ -25,7 +29,7 @@ export const SelectedProjectProvider: React.FC<{ children: ReactNode }> = ({
 
 export const useSelectedProjectValue = () => {
   const context = useContext(SelectedProjectContext);
-  if (!context) {
+  if (context === undefined) {
     throw new Error(
       "useSelectedProjectValue must be used within a SelectedProjectProvider"
     );

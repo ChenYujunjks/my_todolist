@@ -1,18 +1,20 @@
 import React, { createContext, useContext, ReactNode } from "react";
 import { useProjects } from "../hooks";
 
-interface ProjectsContextType {
-  projects: any[]; // 替换为项目的实际类型
-  setProjects: (projects: any[]) => void; // 替换为项目的实际类型
+interface ProjectsContextProps {
+  projects: any[]; // Replace `any` with the actual type of your projects
+  setProjects: React.Dispatch<React.SetStateAction<any[]>>; // Replace `any` with the actual type of your projects
 }
 
-const ProjectsContext = createContext<ProjectsContextType | undefined>(
+export const ProjectsContext = createContext<ProjectsContextProps | undefined>(
   undefined
 );
 
-export const ProjectsProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+interface ProjectsProviderProps {
+  children: ReactNode;
+}
+
+export const ProjectsProvider = ({ children }: ProjectsProviderProps) => {
   const { projects, setProjects } = useProjects();
 
   return (
@@ -24,7 +26,7 @@ export const ProjectsProvider: React.FC<{ children: ReactNode }> = ({
 
 export const useProjectsValue = () => {
   const context = useContext(ProjectsContext);
-  if (!context) {
+  if (context === undefined) {
     throw new Error("useProjectsValue must be used within a ProjectsProvider");
   }
   return context;
