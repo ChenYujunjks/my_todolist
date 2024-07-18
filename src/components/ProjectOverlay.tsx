@@ -7,11 +7,11 @@ interface ProjectOverlayProps {
   setShowProjectOverlay: (show: boolean) => void;
 }
 
-export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({
+export const ProjectOverlay = ({
   setProject,
   showProjectOverlay,
   setShowProjectOverlay,
-}) => {
+}: ProjectOverlayProps) => {
   const { projects } = useProjectsValue();
 
   return (

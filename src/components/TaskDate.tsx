@@ -1,4 +1,3 @@
-import React from "react";
 import moment from "moment";
 import { FaSpaceShuttle, FaSun, FaRegPaperPlane } from "react-icons/fa";
 
@@ -8,11 +7,11 @@ interface TaskDateProps {
   setShowTaskDate: (show: boolean) => void;
 }
 
-export const TaskDate: React.FC<TaskDateProps> = ({
+export const TaskDate = ({
   setTaskDate,
   showTaskDate,
   setShowTaskDate,
-}) =>
+}: TaskDateProps) =>
   showTaskDate && (
     <div className="task-date" data-testid="task-date-overlay">
       <ul className="task-date__list">

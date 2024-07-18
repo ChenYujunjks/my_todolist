@@ -14,12 +14,12 @@ interface AddTaskProps {
   setShowQuickAddTask?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const AddTask: React.FC<AddTaskProps> = ({
+export const AddTask = ({
   showAddTaskMain = true,
   shouldShowMain = false,
   showQuickAddTask,
   setShowQuickAddTask,
-}) => {
+}: AddTaskProps) => {
   const [task, setTask] = useState("");
   const [taskDate, setTaskDate] = useState("");
   const [project, setProject] = useState("");

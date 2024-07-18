@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaPizzaSlice } from "react-icons/fa";
 import { AddTask } from "../AddTask";
 
@@ -7,7 +7,7 @@ interface HeaderProps {
   setDarkMode: (darkMode: boolean) => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode }) => {
+export const Header = ({ darkMode, setDarkMode }: HeaderProps) => {
   const [shouldShowMain, setShouldShowMain] = useState(false);
   const [showQuickAddTask, setShowQuickAddTask] = useState(false);
 

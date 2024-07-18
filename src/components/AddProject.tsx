@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { db } from "../firebase";
 import { generatePushId } from "../helpers";
 import { useProjectsValue } from "../context";
@@ -8,9 +8,7 @@ interface AddProjectProps {
   shouldShow?: boolean;
 }
 
-export const AddProject: React.FC<AddProjectProps> = ({
-  shouldShow = false,
-}) => {
+export const AddProject = ({ shouldShow = false }: AddProjectProps) => {
   const [show, setShow] = useState(shouldShow);
   const [projectName, setProjectName] = useState("");
 

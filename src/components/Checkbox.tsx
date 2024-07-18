@@ -1,4 +1,3 @@
-import React from "react";
 import { db } from "../firebase";
 import { doc, updateDoc } from "firebase/firestore";
 
@@ -7,7 +6,7 @@ interface CheckboxProps {
   taskDesc: string;
 }
 
-export const Checkbox: React.FC<CheckboxProps> = ({ id, taskDesc }) => {
+export const Checkbox = ({ id, taskDesc }: CheckboxProps) => {
   const archiveTask = async () => {
     const taskDoc = doc(db, "task", id);
     await updateDoc(taskDoc, {

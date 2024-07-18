@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { useProjectsValue, useSelectedProjectValue } from "../context";
 import { doc, deleteDoc } from "firebase/firestore";
@@ -13,9 +13,7 @@ interface IndividualProjectProps {
   project: Project;
 }
 
-export const IndividualProject: React.FC<IndividualProjectProps> = ({
-  project,
-}) => {
+export const IndividualProject = ({ project }: IndividualProjectProps) => {
   const [showConfirm, setShowConfirm] = useState(false);
   const { projects, setProjects } = useProjectsValue();
   const { setSelectedProject } = useSelectedProjectValue();
