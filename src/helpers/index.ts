@@ -4,8 +4,8 @@ import { Project } from "../hooks";
 export const getTitle = (projects: Project[], projectId: string) =>
   projects.find((project) => project.projectId === projectId);
 
-export const getCollatedTitle = (projects: Project[], key: string) =>
-  projects.find((project) => project.key === key);
+export const getCollatedTitle = (tasks: CollatedTask[], key: string) =>
+  tasks.find((project) => project.key === key);
 
 export const collatedTasksExist = (
   selectedProject: string

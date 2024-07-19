@@ -17,6 +17,7 @@ interface Task {
   projectId: string;
   date: string;
   archived: boolean;
+  task: string;
 }
 
 export interface Project {
