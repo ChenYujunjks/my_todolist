@@ -1,9 +1,5 @@
 import { collatedTasks, CollatedTask } from "../constants";
-
-interface Project {
-  projectId: string;
-  key?: string;
-}
+import { Project } from "../hooks";
 
 export const getTitle = (projects: Project[], projectId: string) =>
   projects.find((project) => project.projectId === projectId);

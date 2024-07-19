@@ -1,9 +1,9 @@
 import React, { createContext, useContext, ReactNode } from "react";
-import { useProjects } from "../hooks";
+import { useProjects, Project } from "../hooks";
 
 interface ProjectsContextProps {
-  projects: any[]; // Replace `any` with the actual type of your projects
-  setProjects: React.Dispatch<React.SetStateAction<any[]>>; // Replace `any` with the actual type of your projects
+  projects: Project[];
+  setProjects: React.Dispatch<React.SetStateAction<Project[]>>;
 }
 
 export const ProjectsContext = createContext<ProjectsContextProps | undefined>(
@@ -24,6 +24,7 @@ export const ProjectsProvider = ({ children }: ProjectsProviderProps) => {
   );
 };
 
+//获取ProjectContext的值，并确保该Hook只能在ProjectProvider中使用。
 export const useProjectsValue = () => {
   const context = useContext(ProjectsContext);
   if (context === undefined) {

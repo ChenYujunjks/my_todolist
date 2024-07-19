@@ -17,13 +17,13 @@ interface Task {
   projectId: string;
   date: string;
   archived: boolean;
-  [key: string]: any;
 }
 
-interface Project {
+export interface Project {
   projectId: string;
   docId?: string;
-  [key: string]: any;
+  key?: string;
+  name?: string;
 }
 
 export const useTasks = (selectedProject: string) => {
