@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { db } from "../firebase";
+import { db } from "../config/firebase";
 import { generatePushId } from "../helpers";
 import { useProjectsValue } from "../context";
 import { collection, addDoc } from "firebase/firestore";

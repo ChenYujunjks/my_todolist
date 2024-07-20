@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import { useState, useEffect } from "react";
 import moment from "moment";
-import { db } from "../firebase";
+import { db } from "../config/firebase";
 import { collatedTasksExist } from "../helpers";
 import {
   collection,
@@ -22,7 +22,7 @@ interface Task {
 
 export interface Project {
   projectId: string;
-  docId?: string;
+  docId: string;
   key?: string;
   name?: string;
 }

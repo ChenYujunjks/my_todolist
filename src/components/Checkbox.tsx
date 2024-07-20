@@ -1,4 +1,4 @@
-import { db } from "../firebase";
+import { db } from "../config/firebase";
 import { doc, updateDoc } from "firebase/firestore";
 
 interface CheckboxProps {
