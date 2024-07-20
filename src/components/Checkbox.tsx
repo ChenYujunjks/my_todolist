@@ -1,3 +1,4 @@
+// Delete Tasks logics
 import { db } from "../config/firebase";
 import { doc, updateDoc } from "firebase/firestore";
 
@@ -8,7 +9,7 @@ interface CheckboxProps {
 
 export const Checkbox = ({ id, taskDesc }: CheckboxProps) => {
   const archiveTask = async () => {
-    const taskDoc = doc(db, "task", id);
+    const taskDoc = doc(db, "tasks", id);
     await updateDoc(taskDoc, {
       archived: true,
     });
