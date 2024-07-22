@@ -6,6 +6,7 @@ import { useSelectedProjectValue } from "../context";
 import { ProjectOverlay } from "./ProjectOverlay";
 import { TaskDate } from "./TaskDate";
 import { collection, addDoc } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 interface AddTaskProps {
   showAddTaskMain?: boolean;
@@ -47,6 +48,8 @@ export const AddTask = ({
           task,
           date: collatedDate || taskDate,
           userId: "jlIFXIwyAL3tzHMtzRbw",
+          // TODO : implement authentication system
+          // userId: getAuth().currentUser?.uid,
         });
         setTask("");
         setProject("");
