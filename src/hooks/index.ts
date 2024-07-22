@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import { useState, useEffect } from "react";
 import moment from "moment";
-import { db } from "../firebase";
+import { db } from "../config/firebase";
 import { collatedTasksExist } from "../helpers";
 import {
   collection,
@@ -17,13 +17,14 @@ interface Task {
   projectId: string;
   date: string;
   archived: boolean;
-  [key: string]: any;
+  task: string;
 }
 
-interface Project {
+export interface Project {
   projectId: string;
-  docId?: string;
-  [key: string]: any;
+  docId: string;
+  key?: string;
+  name?: string;
 }
 
 export const useTasks = (selectedProject: string) => {

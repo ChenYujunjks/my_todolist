@@ -2,12 +2,8 @@ import { useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { useProjectsValue, useSelectedProjectValue } from "../context";
 import { doc, deleteDoc } from "firebase/firestore";
-import { db } from "../firebase";
-
-interface Project {
-  docId: string;
-  name: string;
-}
+import { db } from "../config/firebase";
+import { Project } from "../hooks";
 
 interface IndividualProjectProps {
   project: Project;

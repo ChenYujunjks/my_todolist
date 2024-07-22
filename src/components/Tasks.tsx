@@ -11,19 +11,20 @@ export const Tasks = () => {
   const { projects } = useProjectsValue();
   const { tasks } = useTasks(selectedProject);
 
-  let projectName = "";
+  let projectName: string | undefined = "";
 
   if (collatedTasksExist(selectedProject) && selectedProject) {
-    projectName = getCollatedTitle(collatedTasks, selectedProject).name;
+    const collatedTitle = getCollatedTitle(collatedTasks, selectedProject);
+    projectName = collatedTitle ? collatedTitle.name : "";
   }
-
   if (
     projects &&
     projects.length > 0 &&
     selectedProject &&
     !collatedTasksExist(selectedProject)
   ) {
-    projectName = getTitle(projects, selectedProject).name;
+    const project = getTitle(projects, selectedProject);
+    projectName = project ? project.name : "";
   }
 
   useEffect(() => {

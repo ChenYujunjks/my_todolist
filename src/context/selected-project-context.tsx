@@ -6,6 +6,7 @@ interface SelectedProjectContextProps {
 }
 
 export const SelectedProjectContext = createContext<
+  //return a Context object
   SelectedProjectContextProps | undefined
 >(undefined);
 
@@ -28,6 +29,7 @@ export const SelectedProjectProvider = ({
 };
 
 export const useSelectedProjectValue = () => {
+  //获取SelectedProjectContext的值，并确保该Hook只能在SelectedProjectProvider中使用。
   const context = useContext(SelectedProjectContext);
   if (context === undefined) {
     throw new Error(
